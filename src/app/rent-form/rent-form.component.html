@@ -1,0 +1,31 @@
+<ng-container class="carContainer" *ngIf="user; else NotLogged">
+    <h2>Rent {{car?.producer}} {{car?.make}}</h2>
+    <img class="carImage" src="{{car?.imageUrl}}" width="300" alt="{{car?.imageUrl}}">
+    <label class="carName">{{car?.producer}} {{car?.make}}</label>
+    <label class="carData">{{car?.year}} | {{car?.fuel}} | {{car?.milage}}</label>
+    <label class="carPrice">{{car?.price}}/hour</label>
+
+    <form #rentForm="ngForm" class="formContainer">
+        <label>Start date:</label>
+        <input #startDate="ngModel" name="startDate" [(ngModel)]="rentStartDate" type="datetime-local">
+        <label>End date:</label>
+        <input #endDate="ngModel" name="endDate" [(ngModel)]="rentEndDate" type="datetime-local" required>
+        <small class="invalid" *ngIf="!dateCorrect">this date is occupied</small>
+
+
+        <button class="carRentButton" [disabled]="!checkDate()" (click)="testDates()">RENT</button>
+    </form>
+
+    <h2 *ngIf="rents">My rents for this car</h2>
+    <div *ngFor="let rent of myRents" style="display: flex; flex-direction: column;">
+        <br>
+        <label>Start date: {{rent.startDate.slice(0,10)}}</label>
+        <label>End date: {{rent.endDate.slice(0,10)}}</label>
+        <button>Manage</button>
+        <br>
+    </div>
+</ng-container>
+<ng-template #NotLogged>
+    <h2>You are not logged in</h2>
+    <h4>Please log in to continue</h4>
+</ng-template>

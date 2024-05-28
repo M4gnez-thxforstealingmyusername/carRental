@@ -1,0 +1,7 @@
+<div class="carContainer">
+    <img class="carImage" src="{{car?.imageUrl}}" width="300" alt="{{car?.imageUrl}}">
+    <label class="carName">{{car?.producer}} {{car?.make}}</label>
+    <label class="carData">{{car?.year}} | {{car?.fuel}} | {{car?.milage}}</label>
+    <label class="carPrice">{{car?.price}}/hour</label>
+    <a href="/rent/{{car?.id}}"><button class="carRentButton">RENT</button></a>
+</div>

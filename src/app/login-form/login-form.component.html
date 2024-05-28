@@ -1,0 +1,18 @@
+<form #loginForm="ngForm" class="formContainer" (submit)="login()" *ngIf="!user">
+    <h2>Login</h2>
+
+    <label for="email">E-mail address: </label>
+    <input #email="ngModel" id="email" type="email" name="email" [(ngModel)]="userEmail" required="">
+    <label for="password">Password: </label>
+    <input #password="ngModel" id="password" type="password" name="password" [(ngModel)]="userPassword" required="">
+
+    <small class="invalid">{{info?.message}}</small>
+
+    <br>
+    <button type="submit">Login</button>
+</form>
+
+<div *ngIf="user">
+    <h2>You are logged in</h2>
+    <a href="/home"><button>Home</button></a>
+</div>

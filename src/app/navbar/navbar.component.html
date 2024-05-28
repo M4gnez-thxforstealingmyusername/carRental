@@ -1,0 +1,11 @@
+<nav>
+    <a href="/home"><button>Home</button></a>
+    <a href="/cars"><button>Cars</button></a>
+    <a href="/contact"><button>Contact</button></a>
+
+    <a href="/login"><button *ngIf="!user">Login</button></a>
+    <a href="/register"><button *ngIf="!user">Register</button></a>
+
+    <a href="/account"><button *ngIf="user">{{user.email}}</button></a>
+    <a href="/home"><button *ngIf="user" (click)="logout()">Logout</button></a>
+</nav>

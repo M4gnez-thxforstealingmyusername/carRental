@@ -1,0 +1,33 @@
+<form #registerForm="ngForm" class="formContainer" (submit)="registerUser()">
+    <h2>Register</h2>
+    <label for="name">Name: </label>
+    <input #name="ngModel" id="name" type="text" name="name" [(ngModel)]="user.name" required>
+    <small class="invalid" *ngIf="!name.valid && name.touched">name is required</small>
+
+    <label for="lastName">Last name: </label>
+    <input #lastName="ngModel" id="lastName" type="text" name="lastName" [(ngModel)]="user.lastName" required>
+    <small class="invalid" *ngIf="!lastName.valid && lastName.touched">last name is required</small>
+
+    <label for="email">E-mail address: </label>
+    <input #email="ngModel" id="email" type="email" name="email" [(ngModel)]="user.email" required>
+    <small class="invalid" *ngIf="!checkEmail() && email.touched">e-mail address is incorrect</small>
+    <small class="invalid" *ngIf="!email.valid && email.touched">e-mail address is required</small>
+
+    <label for="password">Password: </label>
+    <input #password id="password" type="password" name="password" [(ngModel)]="userPassword" required maxlength="20">
+    <small [class.invalid]="!checkPasswordLen()">>password must have at least 8 characters</small>
+    <small [class.invalid]="!checkPasswordDigit()">>password must contain a digit</small>
+    <small [class.invalid]="!checkPasswordLower()">>password must contain a lower case character</small>
+    <small [class.invalid]="!checkPasswordUpper()">>password must contain a upper case character</small>
+
+    <label for="passwordConfirm">Confirm password: </label>
+    <input #passwordConfirm="ngModel" id="passwordConfirm" type="password" name="passwordConfirm" [(ngModel)]="userPasswordConfirm" required maxlength="20">
+    <small class="invalid" *ngIf="userPassword != userPasswordConfirm && passwordConfirm.touched">passwords do not match</small>
+
+    <label for="phone">Phone number: </label>
+    <input #phone="ngModel" id="phone" type="tel" name="phone" [(ngModel)]="user.phone" pattern="(\d{9})|(\+48\d{9})" required>
+    <small class="invalid" *ngIf="!phone.valid && phone.touched">phone number is required</small>
+
+    <br>
+    <button type="submit" [disabled]="!registerForm.valid || !checkPasswordDigit() || !checkPasswordLen() || !checkPasswordLower() || !checkPasswordUpper() || !checkEmail()">Register</button>
+</form>

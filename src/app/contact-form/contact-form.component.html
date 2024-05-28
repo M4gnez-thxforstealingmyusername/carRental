@@ -1,0 +1,28 @@
+<form #registerForm="ngForm" class="formContainer" (submit)="registerContact()" class="formContainer">
+    <h2>Contact us:</h2>
+    <h4>We will answer your questions!</h4>
+    <label>Phone: xxx-xxx-xxx</label>
+    <label>E-mail address: xxxxxxxxx&#64;xxx.xx</label>
+
+    <h4>Or let us contact you instead!</h4>
+
+    <label for="name">Name: </label>
+    <input #name="ngModel" id="name" type="text" name="name" [(ngModel)]="user.name" required>
+    <small class="invalid" *ngIf="!name.valid && name.touched">name is required</small>
+
+    <label for="lastName">Last name: </label>
+    <input #lastName="ngModel" id="lastName" type="text" name="lastName" [(ngModel)]="user.lastName" required>
+    <small class="invalid" *ngIf="!lastName.valid && lastName.touched">last name is required</small>
+
+    <label for="email">E-mail address: </label>
+    <input #email="ngModel" id="email" type="email" name="email" [(ngModel)]="user.email" required>
+    <small class="invalid" *ngIf="!checkEmail() && email.touched">e-mail address is incorrect</small>
+    <small class="invalid" *ngIf="!email.valid && email.touched">e-mail address is required</small>
+
+    <label for="phone">Phone number: </label>
+    <input #phone="ngModel" id="phone" type="tel" name="phone" [(ngModel)]="user.phone" pattern="(\d{9})|(\+48\d{9})" required>
+    <small class="invalid" *ngIf="!phone.valid && phone.touched">phone number is required</small>
+
+    <br>
+    <button type="submit" [disabled]="!registerForm.valid || !checkEmail()">Please contact with me</button>
+</form>
