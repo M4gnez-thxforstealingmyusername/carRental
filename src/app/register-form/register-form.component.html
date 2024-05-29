@@ -15,10 +15,10 @@
 
     <label for="password">Password: </label>
     <input #password id="password" type="password" name="password" [(ngModel)]="userPassword" required maxlength="20">
-    <small [class.invalid]="!checkPasswordLen()">>password must have at least 8 characters</small>
-    <small [class.invalid]="!checkPasswordDigit()">>password must contain a digit</small>
-    <small [class.invalid]="!checkPasswordLower()">>password must contain a lower case character</small>
-    <small [class.invalid]="!checkPasswordUpper()">>password must contain a upper case character</small>
+    <small [class.text-red-500]="!checkPasswordLen()">>password must have at least 8 characters</small>
+    <small [class.text-red-500]="!checkPasswordDigit()">>password must contain a digit</small>
+    <small [class.text-red-500]="!checkPasswordLower()">>password must contain a lower case character</small>
+    <small [class.text-red-500]="!checkPasswordUpper()">>password must contain a upper case character</small>
 
     <label for="passwordConfirm">Confirm password: </label>
     <input #passwordConfirm="ngModel" id="passwordConfirm" type="password" name="passwordConfirm" [(ngModel)]="userPasswordConfirm" required maxlength="20">
