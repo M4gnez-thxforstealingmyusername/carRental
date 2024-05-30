@@ -1,18 +1,50 @@
-<form #loginForm="ngForm" class="formContainer" (submit)="login()" *ngIf="!user">
-    <h2>Login</h2>
+<form
+  #loginForm="ngForm"
+  class="bg-white p-6 rounded-lg shadow-md max-w-md mx-auto my-8"
+  (submit)="login()"
+  *ngIf="!user"
+>
+  <h2 class="text-2xl font-bold mb-4">Login</h2>
 
-    <label for="email">E-mail address: </label>
-    <input #email="ngModel" id="email" type="email" name="email" [(ngModel)]="userEmail" required="">
-    <label for="password">Password: </label>
-    <input #password="ngModel" id="password" type="password" name="password" [(ngModel)]="userPassword" required="">
+  <label for="email" class="block mb-2">E-mail address:</label>
+  <input
+    #email="ngModel"
+    id="email"
+    type="email"
+    name="email"
+    [(ngModel)]="userEmail"
+    required
+    class="border border-gray-300 p-2 w-full rounded mb-4"
+  />
 
-    <small class="invalid">{{info?.message}}</small>
+  <label for="password" class="block mb-2">Password:</label>
+  <input
+    #password="ngModel"
+    id="password"
+    type="password"
+    name="password"
+    [(ngModel)]="userPassword"
+    required
+    class="border border-gray-300 p-2 w-full rounded mb-4"
+  />
 
-    <br>
-    <button type="submit">Login</button>
+  <small class="text-red-500 block mb-4">{{ info?.message }}</small>
+
+  <button
+    type="submit"
+    class="bg-orange-500 text-white py-2 px-4 rounded hover:bg-orange-600"
+  >
+    Login
+  </button>
 </form>
 
-<div *ngIf="user">
-    <h2>You are logged in</h2>
-    <a href="/home"><button>Home</button></a>
+<div *ngIf="user" class="text-center my-8">
+  <h2 class="text-2xl font-bold mb-4">You are logged in</h2>
+  <a href="/home">
+    <button
+      class="bg-orange-500 text-white py-2 px-4 rounded hover:bg-orange-600"
+    >
+      Home
+    </button>
+  </a>
 </div>

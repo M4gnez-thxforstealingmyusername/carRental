@@ -1,33 +1,131 @@
-<form #registerForm="ngForm" class="formContainer" (submit)="registerUser()">
-    <h2>Register</h2>
-    <label for="name">Name: </label>
-    <input #name="ngModel" id="name" type="text" name="name" [(ngModel)]="user.name" required>
-    <small class="invalid" *ngIf="!name.valid && name.touched">name is required</small>
+<form
+  #registerForm="ngForm"
+  class="formContainer bg-white p-6 rounded-lg shadow-md max-w-md mx-auto my-8"
+  (submit)="registerUser()"
+>
+  <h2 class="text-2xl font-bold mb-4">Register</h2>
+  <label class="block mb-2" for="name">Name: </label>
+  <input
+    #name="ngModel"
+    id="name"
+    type="text"
+    name="name"
+    [(ngModel)]="user.name"
+    required
+    class="border border-gray-300 p-2 w-full rounded mb-3"
+  />
+  <small class="text-red-600 block mb-2" *ngIf="!name.valid && name.touched"
+    >name is required</small
+  >
 
-    <label for="lastName">Last name: </label>
-    <input #lastName="ngModel" id="lastName" type="text" name="lastName" [(ngModel)]="user.lastName" required>
-    <small class="invalid" *ngIf="!lastName.valid && lastName.touched">last name is required</small>
+  <label for="lastName">Last name: </label>
+  <input
+    #lastName="ngModel"
+    id="lastName"
+    type="text"
+    name="lastName"
+    [(ngModel)]="user.lastName"
+    required
+    class="border border-gray-300 p-2 w-full rounded mb-4"
+  />
+  <small
+    class="text-red-600 block mb-2"
+    *ngIf="!lastName.valid && lastName.touched"
+    >last name is required</small
+  >
 
-    <label for="email">E-mail address: </label>
-    <input #email="ngModel" id="email" type="email" name="email" [(ngModel)]="user.email" required>
-    <small class="invalid" *ngIf="!checkEmail() && email.touched">e-mail address is incorrect</small>
-    <small class="invalid" *ngIf="!email.valid && email.touched">e-mail address is required</small>
+  <label for="email">E-mail address: </label>
+  <input
+    #email="ngModel"
+    id="email"
+    type="email"
+    name="email"
+    [(ngModel)]="user.email"
+    required
+    class="border border-gray-300 p-2 w-full rounded mb-4"
+  />
+  <small class="text-red-600 block mb-2" *ngIf="!checkEmail() && email.touched"
+    >e-mail address is incorrect</small
+  >
+  <small class="text-red-600 block mb-2" *ngIf="!email.valid && email.touched"
+    >e-mail address is required</small
+  >
 
-    <label for="password">Password: </label>
-    <input #password id="password" type="password" name="password" [(ngModel)]="userPassword" required maxlength="20">
-    <small [class.text-red-500]="!checkPasswordLen()">>password must have at least 8 characters</small>
-    <small [class.text-red-500]="!checkPasswordDigit()">>password must contain a digit</small>
-    <small [class.text-red-500]="!checkPasswordLower()">>password must contain a lower case character</small>
-    <small [class.text-red-500]="!checkPasswordUpper()">>password must contain a upper case character</small>
+  <label for="password">Password: </label>
+  <input
+    #password
+    id="password"
+    type="password"
+    name="password"
+    [(ngModel)]="userPassword"
+    required
+    maxlength="20"
+    class="border border-gray-300 p-2 w-full rounded mb-4"
+  />
+  <small class="text-red-500 block mb-2" [class.text-black]="checkPasswordLen()"
+    >>password must have at least 8 characters</small
+  >
+  <small
+    class="text-red-500 block mb-2"
+    [class.text-black]="checkPasswordDigit()"
+    >>password must contain a digit</small
+  >
+  <small
+    class="text-red-500 block mb-2"
+    [class.text-black]="checkPasswordLower()"
+    >>password must contain a lower case character</small
+  >
+  <small
+    class="text-red-500 block mb-2"
+    [class.text-black]="checkPasswordUpper()"
+    >>password must contain a upper case character</small
+  >
 
-    <label for="passwordConfirm">Confirm password: </label>
-    <input #passwordConfirm="ngModel" id="passwordConfirm" type="password" name="passwordConfirm" [(ngModel)]="userPasswordConfirm" required maxlength="20">
-    <small class="invalid" *ngIf="userPassword != userPasswordConfirm && passwordConfirm.touched">passwords do not match</small>
+  <label for="passwordConfirm">Confirm password: </label>
+  <input
+    #passwordConfirm="ngModel"
+    id="passwordConfirm"
+    type="password"
+    name="passwordConfirm"
+    [(ngModel)]="userPasswordConfirm"
+    required
+    maxlength="20"
+    class="border border-gray-300 p-2 w-full rounded mb-4"
+  />
+  <small
+    class="text-red-600 block mb-2"
+    *ngIf="userPassword != userPasswordConfirm && passwordConfirm.touched"
+    >passwords do not match</small
+  >
 
-    <label for="phone">Phone number: </label>
-    <input #phone="ngModel" id="phone" type="tel" name="phone" [(ngModel)]="user.phone" pattern="(\d{9})|(\+48\d{9})" required>
-    <small class="invalid" *ngIf="!phone.valid && phone.touched">phone number is required</small>
+  <label for="phone">Phone number: </label>
+  <input
+    #phone="ngModel"
+    id="phone"
+    type="tel"
+    name="phone"
+    [(ngModel)]="user.phone"
+    pattern="(\d{9})|(\+48\d{9})"
+    required
+    class="border border-gray-300 p-2 w-full rounded mb-4"
+  />
+  <small class="text-red-600 block mb-2" *ngIf="!phone.valid && phone.touched"
+    >phone number is required</small
+  >
 
-    <br>
-    <button type="submit" [disabled]="!registerForm.valid || !checkPasswordDigit() || !checkPasswordLen() || !checkPasswordLower() || !checkPasswordUpper() || !checkEmail()">Register</button>
+  <br />
+  <button
+    type="submit"
+    [disabled]="
+      !registerForm.valid ||
+      !checkPasswordDigit() ||
+      !checkPasswordLen() ||
+      !checkPasswordLower() ||
+      !checkPasswordUpper() ||
+      !checkEmail()
+    "
+    class="bg-orange-500 text-white py-2 px-4 rounded hover:bg-orange-600"
+  >
+    Register
+  </button>
 </form>
