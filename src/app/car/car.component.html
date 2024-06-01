@@ -1,7 +1,24 @@
-<div class="carContainer">
-    <img class="carImage" src="{{car?.imageUrl}}" width="300" alt="{{car?.imageUrl}}">
-    <label class="carName">{{car?.producer}} {{car?.make}}</label>
-    <label class="carData">{{car?.year}} | {{car?.fuel}} | {{car?.milage}}</label>
-    <label class="carPrice">{{car?.price}}/hour</label>
-    <a href="/rent/{{car?.id}}"><button class="carRentButton">RENT</button></a>
-</div>
+<div class="carContainer bg-white p-6 rounded-lg shadow-md max-w-md my-8">
+    <img
+      class="carImage w-full h-48 object-cover rounded mb-4"
+      src="{{ car?.imageUrl }}"
+      alt="{{ car?.imageUrl }}"
+    />
+    <label class="carName block text-xl font-bold mb-2"
+      >{{ car?.producer }} {{ car?.make }}</label
+    >
+    <label class="carData block text-gray-600 mb-2"
+      >{{ car?.year }} | {{ car?.fuel }} | {{ car?.milage }}</label
+    >
+    <label class="carPrice block text-lg font-semibold mb-4"
+      >{{ car?.price }}/hour</label
+    >
+    <a href="/rent/{{ car?.id }}">
+      <button
+        class="carRentButton bg-orange-500 text-white py-2 px-4 rounded hover:bg-orange-600 w-full"
+      >
+        RENT
+      </button>
+    </a>
+  </div>
+  

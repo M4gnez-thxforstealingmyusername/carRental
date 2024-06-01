@@ -1,11 +1,49 @@
-<nav>
-    <a href="/home"><button>Home</button></a>
-    <a href="/cars"><button>Cars</button></a>
-    <a href="/contact"><button>Contact</button></a>
-
-    <a href="/login"><button *ngIf="!user">Login</button></a>
-    <a href="/register"><button *ngIf="!user">Register</button></a>
-
-    <a href="/account"><button *ngIf="user">{{user.email}}</button></a>
-    <a href="/home"><button *ngIf="user" (click)="logout()">Logout</button></a>
-</nav>
+<nav class="bg-white shadow-md p-4 flex justify-between items-center">
+    <div class="flex space-x-4">
+      <a
+        href="/home"
+        class="bg-orange-500 text-white py-2 px-4 rounded hover:bg-orange-600"
+        >Home</a
+      >
+      <a
+        href="/cars"
+        class="bg-orange-500 text-white py-2 px-4 rounded hover:bg-orange-600"
+        >Cars</a
+      >
+      <a
+        href="/contact"
+        class="bg-orange-500 text-white py-2 px-4 rounded hover:bg-orange-600"
+        >Contact</a
+      >
+    </div>
+  
+    <div class="flex space-x-4">
+      <ng-container *ngIf="!user">
+        <a
+          href="/login"
+          class="bg-orange-500 text-white py-2 px-4 rounded hover:bg-orange-600"
+          >Login</a
+        >
+        <a
+          href="/register"
+          class="bg-orange-500 text-white py-2 px-4 rounded hover:bg-orange-600"
+          >Register</a
+        >
+      </ng-container>
+  
+      <ng-container *ngIf="user">
+        <a
+          href="/account"
+          class="bg-orange-500 text-white py-2 px-4 rounded hover:bg-orange-600"
+          >{{ user.email }}</a
+        >
+        <a
+          href="/home"
+          class="bg-orange-500 text-white py-2 px-4 rounded hover:bg-orange-600"
+          (click)="logout()"
+          >Logout</a
+        >
+      </ng-container>
+    </div>
+  </nav>
+  

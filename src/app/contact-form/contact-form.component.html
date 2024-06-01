@@ -1,28 +1,90 @@
-<form #registerForm="ngForm" class="formContainer" (submit)="registerContact()" class="formContainer">
-    <h2>Contact us:</h2>
-    <h4>We will answer your questions!</h4>
-    <label>Phone: xxx-xxx-xxx</label>
-    <label>E-mail address: xxxxxxxxx&#64;xxx.xx</label>
+<form
+  #registerForm="ngForm"
+  class="bg-white p-6 rounded-lg shadow-md max-w-md mx-auto my-8"
+  (submit)="registerContact()"
+>
+  <h2 class="text-2xl font-bold mb-4">Contact us:</h2>
+  <h4 class="text-lg mb-4">We will answer your questions!</h4>
+  <label class="block mb-2">Phone: xxx-xxx-xxx</label>
+  <label class="block mb-4">E-mail address: xxxxxxxxx&#64;xxx.xx</label>
 
-    <h4>Or let us contact you instead!</h4>
+  <h4 class="text-lg mb-4">Or let us contact you instead!</h4>
 
-    <label for="name">Name: </label>
-    <input #name="ngModel" id="name" type="text" name="name" [(ngModel)]="user.name" required>
-    <small class="invalid" *ngIf="!name.valid && name.touched">name is required</small>
+  <label for="name" class="block mb-2">Name:</label>
+  <input
+    #name="ngModel"
+    id="name"
+    type="text"
+    name="name"
+    [(ngModel)]="user.name"
+    required
+    class="border border-gray-300 p-2 w-full rounded mb-4"
+  />
+  <small
+    class="invalid text-red-600 block mb-4"
+    *ngIf="!name.valid && name.touched"
+    >name is required</small
+  >
 
-    <label for="lastName">Last name: </label>
-    <input #lastName="ngModel" id="lastName" type="text" name="lastName" [(ngModel)]="user.lastName" required>
-    <small class="invalid" *ngIf="!lastName.valid && lastName.touched">last name is required</small>
+  <label for="lastName" class="block mb-2">Last name:</label>
+  <input
+    #lastName="ngModel"
+    id="lastName"
+    type="text"
+    name="lastName"
+    [(ngModel)]="user.lastName"
+    required
+    class="border border-gray-300 p-2 w-full rounded mb-4"
+  />
+  <small
+    class="invalid text-red-600 block mb-4"
+    *ngIf="!lastName.valid && lastName.touched"
+    >last name is required</small
+  >
 
-    <label for="email">E-mail address: </label>
-    <input #email="ngModel" id="email" type="email" name="email" [(ngModel)]="user.email" required>
-    <small class="invalid" *ngIf="!checkEmail() && email.touched">e-mail address is incorrect</small>
-    <small class="invalid" *ngIf="!email.valid && email.touched">e-mail address is required</small>
+  <label for="email" class="block mb-2">E-mail address:</label>
+  <input
+    #email="ngModel"
+    id="email"
+    type="email"
+    name="email"
+    [(ngModel)]="user.email"
+    required
+    class="border border-gray-300 p-2 w-full rounded mb-4"
+  />
+  <small
+    class="invalid text-red-600 block mb-4"
+    *ngIf="!checkEmail() && email.touched"
+    >e-mail address is incorrect</small
+  >
+  <small
+    class="invalid text-red-600 block mb-4"
+    *ngIf="!email.valid && email.touched"
+    >e-mail address is required</small
+  >
 
-    <label for="phone">Phone number: </label>
-    <input #phone="ngModel" id="phone" type="tel" name="phone" [(ngModel)]="user.phone" pattern="(\d{9})|(\+48\d{9})" required>
-    <small class="invalid" *ngIf="!phone.valid && phone.touched">phone number is required</small>
+  <label for="phone" class="block mb-2">Phone number:</label>
+  <input
+    #phone="ngModel"
+    id="phone"
+    type="tel"
+    name="phone"
+    [(ngModel)]="user.phone"
+    pattern="(\d{9})|(\+48\d{9})"
+    required
+    class="border border-gray-300 p-2 w-full rounded mb-4"
+  />
+  <small
+    class="invalid text-red-600 block mb-4"
+    *ngIf="!phone.valid && phone.touched"
+    >phone number is required</small
+  >
 
-    <br>
-    <button type="submit" [disabled]="!registerForm.valid || !checkEmail()">Please contact with me</button>
+  <button
+    type="submit"
+    class="bg-orange-500 text-white py-2 px-4 rounded hover:bg-orange-600"
+    [disabled]="!registerForm.valid || !checkEmail()"
+  >
+    Please contact with me
+  </button>
 </form>
