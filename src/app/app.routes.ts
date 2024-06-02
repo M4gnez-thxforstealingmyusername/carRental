@@ -9,6 +9,7 @@ import { UserComponent } from './user/user.component';
 import { RentModifyComponent } from './rent-modify/rent-modify.component';
 
 export const routes: Routes = [
+    { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'cars', component: CarListComponent },
     { path: 'register', component: RegisterFormComponent },
     { path: 'login', component: LoginFormComponent },

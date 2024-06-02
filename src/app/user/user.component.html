@@ -24,8 +24,8 @@
           >{{ rentGroup.key.producer }} {{ rentGroup.key.make }}</label
         >
         <div *ngFor="let rent of rentGroup.values" class="mb-4">
-          <label class="block mb-2">Start date: {{ rent.startDate }}</label>
-          <label class="block mb-2">End date: {{ rent.endDate }}</label>
+          <label class="block mb-2">Start date: {{ rent.startDate.slice(0, 10) }}</label>
+          <label class="block mb-2">End date: {{ rent.endDate.slice(0, 10) }}</label>
           <a href="/user/rent/{{ rent.id }}">
             <button
               class="bg-orange-500 text-white py-2 px-4 rounded hover:bg-orange-600 w-full"
