@@ -80,7 +80,7 @@ export class RentFormComponent implements OnInit{
 
     if(this.dateCorrect){
       this.rentService.addRent(new Rent(parseInt(this.carId ?? ""), this.rentStartDate, this.rentEndDate)).subscribe();
-
+      
     }
   }
 

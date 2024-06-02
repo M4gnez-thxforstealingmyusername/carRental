@@ -1,0 +1,11 @@
+<h2 *ngIf="!rent">record not found</h2>
+
+<div *ngIf="rent">
+    <label>Start date:</label>
+    <input type="datetime-local" [(ngModel)]="rent.startDate">
+    <label>End date:</label>
+    <input type="datetime-local" [(ngModel)]="rent.endDate">
+
+    <button (click)="modify()">Save</button>
+    <button class="bg-red-500" (click)="callOff()">Call off</button>
+</div>

@@ -20,4 +20,12 @@ export class RentService {
   addRent(rent: Rent): Observable<any>{
     return this.http.post(this.rentUrl, rent, {headers: {'Content-Type': 'application/json'}, withCredentials: true})
   }
+
+  modifyRent(rent: Rent): Observable<any>{
+    return this.http.put(this.rentUrl, rent, {headers: {'Content-Type': 'application/json'}, withCredentials: true})
+  }
+
+  deleteRent(rent: Rent): Observable<any>{
+    return this.http.delete(this.rentUrl, {headers: {'Content-Type': 'application/json'}, withCredentials: true, body: rent})
+  }
 }

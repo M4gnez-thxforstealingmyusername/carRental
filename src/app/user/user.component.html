@@ -1,0 +1,21 @@
+<h1 *ngIf="user">{{user.name}} {{user.lastName}}</h1>
+
+<h3>Your data:</h3>
+<div *ngIf="user">
+    <label>Name: {{user.name}}</label>
+    <label>Last name: {{user.lastName}}</label>
+    <label>E-mail: {{user.email}}</label>
+    <label>Phone: {{user.phone}}</label>
+</div>
+
+<h3>Your rents:</h3>
+
+<div *ngFor="let rentGroup of rentGroups">
+    <img src="{{rentGroup.key.imageUrl}}">
+    <label>{{rentGroup.key.producer}} {{rentGroup.key.make}}</label>
+    <div *ngFor="let rent of rentGroup.values">
+        <label>Start date: {{rent.startDate}}</label>
+        <label>End date: {{rent.endDate}}</label>
+        <a href="/user/rent/{{ rent.id }}"><button>Manage</button></a>
+    </div>
+</div>

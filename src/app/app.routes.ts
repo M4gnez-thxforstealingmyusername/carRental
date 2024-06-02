@@ -5,6 +5,8 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { HomeComponent } from './home/home.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { RentFormComponent } from './rent-form/rent-form.component';
+import { UserComponent } from './user/user.component';
+import { RentModifyComponent } from './rent-modify/rent-modify.component';
 
 export const routes: Routes = [
     { path: 'cars', component: CarListComponent },
@@ -13,4 +15,6 @@ export const routes: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'contact', component: ContactFormComponent },
     { path: 'rent/:id', component: RentFormComponent },
+    { path: 'user', component: UserComponent },
+    { path: 'user/rent/:id', component: RentModifyComponent },
 ];
