@@ -84,6 +84,7 @@
     type="submit"
     class="bg-orange-500 text-white py-2 px-4 rounded hover:bg-orange-600"
     [disabled]="!registerForm.valid || !checkEmail()"
+    [class.disabled]="!registerForm.valid || !checkEmail()"
   >
     Please contact with me
   </button>

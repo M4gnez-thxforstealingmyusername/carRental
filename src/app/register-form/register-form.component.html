@@ -1,19 +1,19 @@
 <form
-    #registerForm="ngForm"
-    class="formContainer bg-white p-6 rounded-lg shadow-md max-w-md mx-auto my-8"
-    (submit)="registerUser()"
+  #registerForm="ngForm"
+  class="formContainer bg-white p-6 rounded-lg shadow-md max-w-md mx-auto my-8"
+  (submit)="registerUser()"
 >
-    <h2 class="text-2xl font-bold mb-4">Register</h2>
-    <label class="block mb-2" for="name">Name: </label>
-    <input
-        #name="ngModel"
-        id="name"
-        type="text"
-        name="name"
-        [(ngModel)]="user.name"
-        required
-        class="border border-gray-300 p-2 w-full rounded mb-3"
-    />
+  <h2 class="text-2xl font-bold mb-4">Register</h2>
+  <label class="block mb-2" for="name">Name: </label>
+  <input
+    #name="ngModel"
+    id="name"
+    type="text"
+    name="name"
+    [(ngModel)]="user.name"
+    required
+    class="border border-gray-300 p-2 w-full rounded mb-3"
+  />
   <small class="text-red-600 block mb-2" *ngIf="!name.valid && name.touched"
     >name is required</small
   >
@@ -65,19 +65,13 @@
   <small class="block mb-2" [class.text-red-600]="!checkPasswordLen()"
     >>password must have at least 8 characters</small
   >
-  <small
-    class="block mb-2"
-    [class.text-red-600]="!checkPasswordDigit()"
+  <small class="block mb-2" [class.text-red-600]="!checkPasswordDigit()"
     >>password must contain a digit</small
   >
-  <small
-    class="block mb-2"
-    [class.text-red-600]="!checkPasswordLower()"
+  <small class="block mb-2" [class.text-red-600]="!checkPasswordLower()"
     >>password must contain a lower case character</small
   >
-  <small
-    class="block mb-2"
-    [class.text-red-600]="!checkPasswordUpper()"
+  <small class="block mb-2" [class.text-red-600]="!checkPasswordUpper()"
     >>password must contain a upper case character</small
   >
 
@@ -117,6 +111,14 @@
   <button
     type="submit"
     [disabled]="
+      !registerForm.valid ||
+      !checkPasswordDigit() ||
+      !checkPasswordLen() ||
+      !checkPasswordLower() ||
+      !checkPasswordUpper() ||
+      !checkEmail()
+    "
+    [class.disabled]="
       !registerForm.valid ||
       !checkPasswordDigit() ||
       !checkPasswordLen() ||

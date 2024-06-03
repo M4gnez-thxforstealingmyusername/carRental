@@ -44,6 +44,7 @@
         <button
           class="carRentButton bg-orange-500 text-white py-2 px-4 rounded hover:bg-orange-600 w-full"
           [disabled]="!checkDate()"
+          [class.disabled]="!checkDate()"
           (click)="testDates()"
         >
           RENT

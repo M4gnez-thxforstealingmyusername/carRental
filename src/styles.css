@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.invalid{
-    color: red;
+.disabled {
+  color: white !important;
+  background-color: gray !important;
 }
